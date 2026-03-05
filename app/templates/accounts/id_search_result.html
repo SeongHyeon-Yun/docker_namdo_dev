@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extend_css %}
+    <link rel="stylesheet" href="{% static "css/accounts/id_search.css" %}">
+{% endblock extend_css %}
+{% block content %}
+    <div class="id-result-container">
+        {% if users %}
+            <h2 class="result-title">가입된 아이디</h2>
+            <ul class="id-list">
+                {% for user in users %}
+                    <li class="id-item">
+                        <div>{{ user.username }}</div>
+                        <div>가입날짜 : {{ user.date_joined|date:"Y-m-d H:i" }}</div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="no-result">입력하신 정보와 일치하는 계정이 없습니다.</div>
+        {% endif %}
+        <div class="result-actions">
+            <a href="{% url 'accounts:id_search' %}" class="btn-back">뒤로가기</a>
+            <a href="{% url 'accounts:login' %}" class="btn-login">로그인</a>
+        </div>
+    </div>
+{% endblock content %}

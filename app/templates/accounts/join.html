@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extend_css %}
+    <link rel="stylesheet" href="{% static "css/accounts/join.css" %}">
+{% endblock extend_css %}
+{% block content %}
+    <div class="join">
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        - {{ error }}
+                        <br>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="join-area">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="title validata">
+                    <span>사이트 이용정보 입력</span>
+                    <span>비밀번호는 8자 이상이며, 영문과 숫자를 포함해야 합니다.
+                    동일하거나 연속된 문자는 사용할 수 없습니다.</span>
+                </div>
+                <div class="grops">
+                    <div class="input-grop">
+                        <label for="id">아이디</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="input-grop">
+                        <label for="pw1">비밀번호</label>
+                        {{ form.password1 }}
+                    </div>
+                    <div class="input-grop">
+                        <label for="pw2">비밀번호 확인</label>
+                        {{ form.password2 }}
+                    </div>
+                </div>
+                <div class="title">
+                    <span class="company-info">사업자 정보 입력</span>
+                </div>
+                <div class="grops">
+                    <div class="input-grop">
+                        <label for="boss_name">대표자 이름</label>
+                        {{ form.boss_name }}
+                    </div>
+                    <div class="input-grop">
+                        <label for="email">E-mail</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="input-grop">
+                        <label for="phone">전화번호</label>
+                        {{ form.phone }}
+                    </div>
+                </div>
+                <div class="grops">
+                    <div class="input-grop">
+                        <label for="company_name">사업자 명</label>
+                        {{ form.company_name }}
+                    </div>
+                    <div class="input-grop">
+                        <label for="company_num">사업자 번호</label>
+                        {{ form.company_num }}
+                    </div>
+                </div>
+                <div class="grops">
+                    <div class="input-grop">
+                        <label for="manager_name">담당자 명</label>
+                        {{ form.manager_name }}
+                    </div>
+                    <div class="input-grop">
+                        <label for="company_img">사업자 등록증</label>
+                        {{ form.company_img }}
+                    </div>
+                </div>
+                <div class="grops">
+                    <div class="input-grop">
+                        <label for="addree_1">우편번호</label>
+                        <div class="input-group">
+                            {{ form.addree_1 }}
+                            <button type="button" class="btn btn-dark" onclick="open_post()">우편번호 검색</button>
+                        </div>
+                    </div>
+                    <div class="input-grop">
+                        <label for="addree_2">주소</label>
+                        <div class="input-group">{{ form.addree_2 }}</div>
+                    </div>
+                    <div class="input-grop">
+                        <label for="addree_3">상세주소</label>
+                        <div class="input-group">{{ form.addree_3 }}</div>
+                    </div>
+                    <div class="input-grop">
+                        <label for="addree_4">참고항목</label>
+                        <div class="input-group">{{ form.addree_4 }}</div>
+                    </div>
+                </div>
+                <div class="title">
+                    <span class="company-info">환불 정보 입력</span>
+                </div>
+                <div class="grops">
+                    <div class="input-grop">
+                        <label for="bank_name">은행 명</label>
+                        {{ form.bank_name }}
+                    </div>
+                    <div class="input-grop">
+                        <label for="bank_num">계좌 번호</label>
+                        {{ form.bank_num }}
+                    </div>
+                </div>
+                <div class="title">
+                    <span class="company-info">정보 수신 동의</span>
+                </div>
+                <div class="marketing">
+                    <div class="form-check">
+                        {{ form.sms_marketing_agree }}
+                        <label class="form-check-label" for="sms_marketing_agree">SMS 마케팅 동의</label>
+                    </div>
+                    <div class="form-check">
+                        {{ form.email_marketing_agree }}
+                        <label class="form-check-label" for="email_marketing_agree">이메일 마케팅 동의</label>
+                    </div>
+                </div>
+                <div class="join-btn">
+                    <button type="submit" class="btn btn-primary">회원가입</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+{% block extend_js %}
+    <script src="//t1.kakaocdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="{% static "js/join.js" %}"></script>
+{% endblock extend_js %}

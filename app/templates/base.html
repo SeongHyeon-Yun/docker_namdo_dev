@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <title>남도청년 B2B</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+              crossorigin="anonymous">
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="{% static "css/base.css" %}">
+        {% block extend_css %}
+        {% endblock extend_css %}
+    </head>
+    <body>
+        <header>
+            <div class="top-menu">
+                <div class="menus">
+                    {% if user.is_authenticated %}
+                        <span>{{ user.company_name }}</span>
+                        <a href="{% url "accounts:logout" %}">
+                            <span>로그아웃</span>
+                        </a>
+                    {% else %}
+                        <a href="{% url "accounts:login" %}">
+                            <span>로그인</span>
+                        </a>
+                        <a href="{% url "accounts:join_check" %}">
+                            <span>회원가입</span>
+                        </a>
+                    {% endif %}
+                    <span>주문배송조회</span>
+                    <span>마이페이지</span>
+                    <span>QnA</span>
+                    <span>고객센터</span>
+                </div>
+            </div>
+            <div class="mid-menu">
+                <div class="menus">
+                    <div class="logo">
+                        <a href="{% url "accounts:index" %}">
+                            <img src="{% static "images/logo.png" %}" alt="#" width="" height="">
+                        </a>
+                    </div>
+                    <div class="btns">
+                        <button>발주서 등록</button>
+                        <button>엑셀 샘플 다운로드</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bt-menu">
+                <div class="menus">
+                    <span>기획전</span>
+                    <span>농산물</span>
+                    <span>수산물</span>
+                    <span>축산물</span>
+                    <span>가공식품</span>
+                    <span>김치</span>
+                    <span>젓갈</span>
+                    <span>모든상품</span>
+                </div>
+            </div>
+        </header>
+        {% block content %}
+        {% endblock content %}
+        <footer>
+            <div class="top-menu">
+                <div class="menus">
+                    <span>회사소개</span>
+                    <span>이용약관</span>
+                    <span>개인정보처리방침</span>
+                    <span>이용안내</span>
+                </div>
+            </div>
+            <div class="bt-menu">
+                <div class="menus">
+                    <div class="left-con">
+                        <img src="{% static "images/logo.png" %}" alt="#" width="" height="">
+                    </div>
+                    <div class="center-con">
+                        <div>
+                            <span>상호 : 남도청년</span>
+                            <span>대표자 : 박장규</span>
+                            <span>E-mail : skaehcjdsus@naver.com</span>
+                        </div>
+                        <div>
+                            <span>주소 : 전라남도 목포시 신흥로 45번길 13 (상동,동아아파트) 104동 13층 6호</span>
+                            <span>사업자 번호 : 276-34-00617</span>
+                        </div>
+                        <div>
+                            <span>통신판매 신고번호 : 제2023-전남목포-0231</span>
+                            <span>개인정보관리 책임자 : 윤성현</span>
+                        </div>
+                    </div>
+                    <div class="right-con">
+                        <span>고객센터</span>
+                        <span>평일 10:00 ~ 18:00</span>
+                        <span>(점심시간 12:00 ~ 13:00)</span>
+                        <span>전화번호 : 010-2275-2023</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+        {% block extend_js %}
+        {% endblock extend_js %}
+    </body>
+</html>

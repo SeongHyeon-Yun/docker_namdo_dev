@@ -1,0 +1,39 @@
+# Python
+
+**pycache**/
+_.py[cod]
+_$py.class
+
+# Virtual Environment
+
+venv/
+.env
+
+# Django
+
+db.sqlite3
+\*.log
+
+# Uploaded files
+
+media/
+
+# VSCode
+
+.vscode/
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Python build
+
+build/
+dist/
+\*.egg-info/
+
+# Docker runtime
+
+_.pid
+_.sock

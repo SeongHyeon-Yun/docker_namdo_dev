@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extend_css %}
+    <link rel="stylesheet" href="{% static "css/accounts/login.css" %}">
+{% endblock extend_css %}
+{% block content %}
+    <div class="login">
+        <div class="login-box">
+            <div class="login-input-area">
+                {% if messages %}
+                    {% for message in messages %}<div class="alert alert-{{ message.tags }}">{{ message }}</div>{% endfor %}
+                {% endif %}
+                <div class="title">남도청년 B2B</div>
+                <div class="sub-title">남도청년 B2B에 오신 것을 환영 합니다.</div>
+                <div class="input-area">
+                    <div>
+                        <form method="post" class="login-form">
+                            {% csrf_token %}
+                            <input class="input" name="username" type="text" placeholder="아이디">
+                            <input class="input" name="user_pw" type="password" placeholder="비밀번호">
+                            <button type="submit" class="login-btn">로그인</button>
+                        </form>
+                        <div class="find-area">
+                            <a href="{% url "accounts:id_search" %}">
+                                <span class="find">아이디</span>
+                            </a>
+                            <span>|</span>
+                            <a href="{% url "accounts:pw_search" %}">
+                                <span class="find">비밀번호</span>
+                            </a>
+                            <span>찾기</span>
+                        </div>
+                        <a href="{% url "accounts:join_check" %}">
+                            <span class="login-btn join-btn">회원가입</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

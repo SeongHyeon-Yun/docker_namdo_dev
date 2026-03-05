@@ -1,0 +1,43 @@
+.join-check-area {
+  min-width: 1420px;
+}
+
+.join-check {
+  width: 1200px;
+  min-height: 450px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.join-check .title {
+  text-align: center;
+}
+
+.join-check .title h2 {
+  font-weight: bold;
+}
+
+.accordion {
+  margin-top: 15px;
+}
+.accordion-button {
+  font-weight: bold;
+}
+
+.accordion-body {
+  white-space: pre-line;
+  height: 250px;
+  overflow-y: auto;
+}
+
+.accordion-body span {
+  display: inline-block;
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.check-area {
+  margin-top: 15px;
+  display: flex;
+  gap: 20px;
+}

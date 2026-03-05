@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extend_css %}
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+{% endblock extend_css %}
+{% block content %}
+    <div class="slider-img">
+        <div class="img">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="swiper-slide-img">
+                            <img src="{% static "images/slider_1.png" %}" alt="#" width="" height="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="swiper-slide-img">
+                            <img src="{% static "images/slider_2.png" %}" alt="#" width="" height="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+    <div class="index-best-items">
+        <div class="top-title">
+            <span class="title-color">BEST</span> 상품
+        </div>
+        <div class="items">
+            <div class="item">
+                <div class="img">1</div>
+                <div class="item-info">
+                    <div class="title">상품이름</div>
+                    <div class="price">가격</div>
+                </div>
+            </div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+        </div>
+    </div>
+{% endblock content %}
+{% block extend_js %}
+    <script src="{% static "js/index.js" %}"></script>
+{% endblock extend_js %}
