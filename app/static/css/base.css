@@ -8,6 +8,7 @@
   --back-color: #f9f9f9;
   --main-border: #ddd;
   --hover-color: #d93838;
+  --border-1px: 1px solid #ddd;
 }
 
 a {

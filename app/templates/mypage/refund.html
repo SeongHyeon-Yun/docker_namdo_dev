@@ -1,0 +1,40 @@
+{% extends "mypage/index.html" %}
+{% load static %}
+{% load humanize %}
+{% block extend_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "css/mypage/deposit.css" %}">
+{% endblock extend_css %}
+{% block index_con %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input type="text"
+                   class="form-control"
+                   id="amount"
+                   name="amount"
+                   placeholder="name@example.com"
+                   required>
+            <label for="amount">환급금액</label>
+        </div>
+        <div class="border p-3">
+            <div class="bold mb-2">입금계좌 안내</div>
+            <div class="mb-2">
+                <span class="bold">계좌 정보</span>
+                <span>{{ user.bank_name }} {{ user.bank_num }}</span>
+                <span class="bold">{{ user.boss_name }}</span>
+            </div>
+            <span class="red font-14">환급 신청 시 등록된 계좌로 입금됩니다.</span>
+        </div>
+        <div class="d-grid gap-2 col-3 mx-auto mt-3">
+            <button class="btn btn-dark btn-sm" type="submit">환급하기</button>
+        </div>
+    </form>
+    {% if messages %}
+        {% include "modal.html" %}
+    {% endif %}
+{% endblock index_con %}
+{% block extend_js %}
+    {{ block.super }}
+    <script src="{% static "js/mypage/deposit.js" %}"></script>
+{% endblock extend_js %}

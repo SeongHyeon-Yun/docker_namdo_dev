@@ -1,0 +1,48 @@
+.breadcrumb-item a {
+  text-decoration: underline;
+  color: blue;
+}
+
+#start_date {
+  width: 100%;
+}
+
+.amount_area {
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+}
+
+.table_area {
+  flex: 1;
+  overflow-y: auto; /* 여기서 스크롤 */
+  text-align: center;
+}
+
+.page_area {
+  height: 40px;
+}
+
+.list_status.pending,
+.list_status.approved,
+.list_status.rejected,
+.type.deposit,
+.type.refund {
+  font-weight: bold;
+}
+
+.list_status.approved {
+  color: green;
+}
+
+.list_status.rejected {
+  color: red;
+}
+
+.type.deposit {
+  color: #dba501;
+}
+
+.type.refund {
+  color: blueviolet;
+}

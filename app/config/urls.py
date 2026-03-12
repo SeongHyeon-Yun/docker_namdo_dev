@@ -7,6 +7,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("accounts.urls")),
     path("wallet/", include("wallet.urls")),
+    path("manage/", include("backOffice.urls")),
+    path("mypage/", include("mypage.urls")),
 ]
 
 if settings.DEBUG:

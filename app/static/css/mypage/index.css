@@ -1,0 +1,80 @@
+.mypage-index {
+  min-width: 1420px;
+  width: 100%;
+}
+
+.mypage-index .wrap {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.mypage-index .wrap h3 {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile {
+  border: var(--border-1px);
+  margin-bottom: 10px;
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+}
+
+.profile .left-con {
+  width: 300px;
+}
+
+.profile .left-con .user {
+  font-size: 80px;
+  text-align: center;
+  color: #3b82f6;
+}
+
+.profile .left-con .info {
+  text-align: center;
+}
+
+.profile .right-con {
+  flex: 1;
+}
+
+.red {
+  color: red;
+  font-weight: bold;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.user-info {
+  padding: 5px;
+}
+
+.user-info .info-2 {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: var(--border-1px);
+}
+
+.user-info .info-2 span:first-child,
+.address span:first-child {
+  width: 100px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.user-info .info-2 span:last-child,
+.address span:last-child {
+  flex: 1;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+}

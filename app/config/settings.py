@@ -25,8 +25,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.humanize",
     "accounts",
     "wallet",
+    "backOffice",
+    "mypage",
 ]
 
 MIDDLEWARE = [
@@ -51,6 +54,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "backOffice.back_contextProcessor.wallet_count",
             ],
         },
     },

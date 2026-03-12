@@ -1,0 +1,56 @@
+{% extends "mypage/index.html" %}
+{% load static %}
+{% load humanize %}
+{% block extend_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "css/mypage/deposit.css" %}">
+{% endblock extend_css %}
+{% block index_con %}
+    <form method="post" action="{% url "mypage:deposit" %}">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input type="text"
+                   class="form-control"
+                   name="amount"
+                   id="amount"
+                   placeholder="name@example.com"
+                   required>
+            <label for="amount">충전금액(1만원 이상)</label>
+            <span class="red font-14">* 최소 충전 금액은 10,000원 이상 입니다.</span>
+        </div>
+        <div class="bold mb-2">결제수단</div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="radioDefault1" checked>
+            <label class="form-check-label" for="radioDefault1">계좌 이체</label>
+        </div>
+        <div class="form-floating mb-3 mt-2">
+            <input type="text"
+                   class="form-control"
+                   name="name"
+                   id="name"
+                   placeholder="name@example.com"
+                   required>
+            <label for="name">입금자 명</label>
+        </div>
+        <div class="border p-3">
+            <div class="bold mb-2">입금계좌 안내</div>
+            <div class="mb-2">
+                <span class="bold">계좌 정보</span>
+                <span>신한은행 110-380-127772</span>
+                <span class="bold">박장규</span>
+            </div>
+            <span class="red font-14">신청하신 금액과 입금액이 일치해야 처리 됩니다.</span>
+        </div>
+        <div class="d-grid gap-2 col-3 mx-auto mt-3">
+            <button class="btn btn-dark btn-sm" type="submit">충전하기</button>
+        </div>
+        <input type="hidden" name="id" value="{{ user.id }}">
+    </form>
+    {% if messages %}
+        {% include "modal.html" %}
+    {% endif %}
+{% endblock index_con %}
+{% block extend_js %}
+    {{ block.super }}
+    <script src="{% static "js/mypage/deposit.js" %}"></script>
+{% endblock extend_js %}

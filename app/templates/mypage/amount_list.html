@@ -1,0 +1,55 @@
+{% extends "mypage/index.html" %}
+{% load static %}
+{% load humanize %}
+{% block extend_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "css/mypage/amount.css" %}">
+{% endblock extend_css %}
+{% block index_con %}
+    <form method="get">
+        <div class="input-group mb-3">
+            <input type="text"
+                   id="date_range"
+                   name="date_range"
+                   class="form-control"
+                   placeholder="날짜를 선택하세요">
+            <button class="btn btn-outline-secondary" type="submit">검색</button>
+        </div>
+    </form>
+    <div class="amount_area">
+        <div class="table_area">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">no</th>
+                        <th scope="col">상태</th>
+                        <th scope="col">구분</th>
+                        <th scope="col">신청금액</th>
+                        <th scope="col">신청일자</th>
+                        <th scope="col">승인일자</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for list in users %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td class="list_status {{ list.status }}">{{ list.get_status_display }}</td>
+                            <td class="type {{ list.wallet_type }}">{{ list.get_wallet_type_display }}</td>
+                            <td>{{ list.amount|intcomma }}</td>
+                            <td>{{ list.created_at|date:"y-m-d H:i" }}</td>
+                            <td>{{ list.confirmed_at|date:"y-m-d H:i" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="page_area">{% include "paginator.html" %}</div>
+    </div>
+    {% if messages %}
+        {% include "modal.html" %}
+    {% endif %}
+{% endblock index_con %}
+{% block extend_js %}
+    {{ block.super }}
+    <script src="{% static "js/mypage/amount.js" %}"></script>
+{% endblock extend_js %}

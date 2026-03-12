@@ -1,0 +1,30 @@
+.tab-menu {
+  display: flex;
+}
+
+.tab-menu div {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-right: none;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+}
+
+.tab-menu div:first-child {
+  border-left: 1px solid #000;
+}
+
+.tab-menu a:nth-child(3) div {
+  border-right: 1px solid #000;
+}
+
+.tab-menu div:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+  color: #fff;
+}
+
+.tab-menu .active {
+  background-color: var(--hover-color);
+  color: #fff;
+}

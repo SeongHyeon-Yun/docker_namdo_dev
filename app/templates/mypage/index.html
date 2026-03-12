@@ -1,0 +1,56 @@
+{% extends "mypage/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block extend_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "css/mypage/index.css" %}">
+{% endblock extend_css %}
+{% block mypage_base %}
+    <div class="profile">
+        <div class="left-con">
+            <div>
+                <div class="user">
+                    <i class="bi bi-person-square"></i>
+                </div>
+                <div class="info bold">{{ user }}</div>
+                <div class="info">
+                    <span class="red">{{ user.balance.amount|intcomma }}</span>
+                    <span>원</span>
+                </div>
+                <div class="user-info">
+                    <div class="info-2">
+                        <span>사업자 번호</span>
+                        <span>{{ user.company_num }}</span>
+                    </div>
+                    <div class="info-2">
+                        <span>대표자 명</span>
+                        <span>{{ user.boss_name }}</span>
+                    </div>
+                    <div class="info-2">
+                        <span>Email</span>
+                        <span>{{ user.email }}</span>
+                    </div>
+                    <div class="info-2">
+                        <span>전화번호</span>
+                        <span>{{ user.phone }}</span>
+                    </div>
+                    <div class="info-2">
+                        <span>담당자 명</span>
+                        <span>{{ user.manager_name }}</span>
+                    </div>
+                    <div class="address">
+                        <span>주소</span>
+                        <span>{{ user.addree_1 }} {{ user.addree_2 }} {{ user.addree_3 }} {{ user.addree_4 }}</span>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="button" class="mt-2 btn btn-outline-dark btn-sm">정보 변경</button>
+                </div>
+            </div>
+        </div>
+        <div class="right-con">
+            {% block index_con %}
+            {% endblock index_con %}
+        </div>
+    </div>
+{% endblock mypage_base %}

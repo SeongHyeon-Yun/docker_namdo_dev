@@ -1,0 +1,93 @@
+{% extends "back_base.html" %}
+{% load static %}
+{% load humanize %}
+{% block extend_css %}
+    <link rel="stylesheet"
+          href="{% static "css/backOffice/user_css/user_page.css" %}">
+{% endblock extend_css %}
+{% block content %}
+    <h1 class="display-6 border-bottom">신청 내역</h1>
+    <div class="user-wrap">
+        <form method="get">
+            <input type="hidden" name="type" value="{{ type }}">
+            <div class="input-group mb-3">
+                <select name="status" class="form-select">
+                    <option value="company_name">회사명</option>
+                </select>
+                <input type="text"
+                       class="form-control"
+                       name="search_value"
+                       placeholder="아이디 / 회사명 검색">
+                <button class="btn btn-primary" type="submit">검색</button>
+            </div>
+        </form>
+        <div class="user-content">
+            <div class="user-info">
+                <div class="wallet-tab-menu">
+                    <a class="{% if type == 'deposit' %} active {% endif %}"
+                       href="?type=deposit">충전 신청
+                        <span class="badge text-bg-danger">{{ deposit_count }}</span>
+                    </a>
+                    <a class="{% if type == 'refund' %} active {% endif %}"
+                       href="?type=refund">환불 신청
+                        <span class="badge text-bg-danger">{{ refund_count }}</span>
+                    </a>
+                    <a class="{% if type == 'd_list' %} active {% endif %}"
+                       href="?type=d_list">충전 내역</a>
+                    <a class="{% if type == 'r_list' %} active {% endif %}"
+                       href="?type=r_list">환불 내역</a>
+                </div>
+                <div class="table-area">
+                    <table class="table table-striped-columns fixed-table table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <td>상태</td>
+                                <td>구분</td>
+                                <td>업체명</td>
+                                <td>입금금액</td>
+                                <td>신청일시</td>
+                                {% if type == 'deposit' or type == 'refund' %}
+                                    <td>여부</td>
+                                {% else %}
+                                    <td>승인일시</td>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                                <tr>
+                                    <td class="{{ user.status }}">{{ user.get_status_display }}</td>
+                                    <td class="{{ user.wallet_type }}">{{ user.get_wallet_type_display }}</td>
+                                    <td>{{ user.user.company_name }}</td>
+                                    <td>{{ user.amount|intcomma }}</td>
+                                    <td>{{ user.created_at|date:"y-m-d H:i" }}</td>
+                                    {% if type == 'deposit' or type == 'refund' %}
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <td>
+                                                <div class="btn-group">
+                                                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                                                    <button type="submit"
+                                                            name="btn"
+                                                            value="approve"
+                                                            class="btn btn-success btn-sm">승인</button>
+                                                    <button type="submit" name="btn" value="reject" class="btn btn-danger btn-sm">거절</button>
+                                                </div>
+                                            </td>
+                                        </form>
+                                    {% else %}
+                                        <td>{{ user.confirmed_at|date:"y-m-d H:i" }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="page">{% include "paginator.html" %}</div>
+        </div>
+    </div>
+    {% if messages %}
+        {% include "modal.html" %}
+    {% endif %}
+{% endblock content %}

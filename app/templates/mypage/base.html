@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block extend_css %}
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="{% static "css/mypage/base.css" %}">
+{% endblock extend_css %}
+{% block content %}
+    <div class="mypage-index">
+        <div class="wrap">
+            <h3>마이페이지</h3>
+            <div class="tab-menu">
+                <a href="{% url "mypage:deposit" %}">
+                    <div class="{% if request.resolver_match.url_name == "deposit" %}active{% endif %}">충전신청</div>
+                </a>
+                <a href="{% url "mypage:refund" %}">
+                    <div class="{% if request.resolver_match.url_name == "refund" %}active{% endif %}">환급신청</div>
+                </a>
+                <a href="{% url "mypage:amount" %}">
+                    <div class="{% if request.resolver_match.url_name == "amount" %}active{% endif %}">신청내역</div>
+                </a>
+            </div>
+            {% block mypage_base %}
+            {% endblock mypage_base %}
+        </div>
+    </div>
+{% endblock content %}
+{% block extend_js %}
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <script src="{% static "js/modal.js" %}"></script>
+{% endblock extend_js %}

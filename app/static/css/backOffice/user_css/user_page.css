@@ -1,0 +1,125 @@
+a {
+  margin: none;
+}
+
+.user-wrap {
+  background-color: #fff;
+  height: calc(100vh - 155px);
+  width: calc(100vw - 300px);
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.form-select {
+  max-width: 120px;
+}
+
+.user-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 230px);
+}
+
+.page {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info {
+  flex: 1;
+  overflow: auto;
+}
+
+.table-area {
+  text-align: center;
+  overflow: auto;
+}
+
+td {
+  white-space: nowrap;
+}
+
+.table thead td {
+  font-weight: bold;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.red {
+  color: red;
+  font-weight: bold;
+}
+
+.green {
+  color: green;
+  font-weight: bold;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.tab-menu a {
+  width: 80px;
+  padding: 5px 20px;
+  border: var(--main-border);
+  border-top-right-radius: 20px;
+}
+
+.tab-menu a:hover {
+  cursor: pointer;
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.tab_active {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.wallet-tab-menu a {
+  display: inline-block;
+  padding: 5px 20px;
+  border: var(--main-border);
+  border-top-right-radius: 20px;
+  color: #000;
+}
+
+.wallet-tab-menu .active {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.table .pending {
+  color: rgb(76, 20, 207);
+  font-weight: bold;
+}
+
+.table .approved {
+  color: green;
+  font-weight: bold;
+}
+
+.table .rejected {
+  color: rgba(255, 0, 221, 0.589);
+  font-weight: bold;
+}
+
+.table .deposit {
+  color: orange;
+  font-weight: bold;
+}
+
+.table .refund {
+  color: red;
+  font-weight: bold;
+}
